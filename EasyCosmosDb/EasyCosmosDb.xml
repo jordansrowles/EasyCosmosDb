@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EasyCosmosDb</name>
+    </assembly>
+    <members>
+        <member name="T:EasyCosmosDb.IBaseCosmosModel">
+            <summary>
+                Interface for BaseCosmosModel
+            </summary>
+        </member>
+        <member name="P:EasyCosmosDb.IBaseCosmosModel.CatchAll">
+            <summary>
+                Collects any data not binded to a property
+            </summary>
+        </member>
+        <member name="T:EasyCosmosDb.BaseCosmosModel">
+            <summary>
+                Base model for business layer objects.
+                Partial class so it can be extended with more properties
+            </summary>
+        </member>
+        <member name="P:EasyCosmosDb.BaseCosmosModel.CatchAll">
+            <summary>
+                Collects any data not binded to a property
+            </summary>
+        </member>
+        <member name="T:EasyCosmosDb.CosmosDbContext">
+            <summary>
+                Represents the context of a Cosmos database service
+            </summary>
+        </member>
+        <member name="P:EasyCosmosDb.CosmosDbContext.Client">
+            <summary>
+                CosmosClient for interacting with Azure Cosmos services
+            </summary>
+        </member>
+        <member name="P:EasyCosmosDb.CosmosDbContext.Database">
+            <summary>
+                The database in context
+            </summary>
+        </member>
+        <member name="M:EasyCosmosDb.CosmosDbContext.#ctor(EasyCosmosDb.IKeyVaultContext,System.String)">
+            <summary>
+                Constructor
+            </summary>
+            <param name="vault">Azure Key Vault context</param>
+            <param name="database">Database name</param>
+        </member>
+        <member name="M:EasyCosmosDb.CosmosDbContext.ItemFeedAsync``1(Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Get all items from a container using a feed iterator
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="container">The container object</param>
+            <returns>List of type T</returns>
+        </member>
+        <member name="M:EasyCosmosDb.CosmosDbContext.GetDocumentsAsync``1(Microsoft.Azure.Cosmos.Container,System.String)">
+            <summary>
+                Gets all items from a container with a query using query definition
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="container">The container object</param>
+            <param name="query">The query to perform</param>
+            <returns>List of type T</returns>
+        </member>
+        <member name="M:EasyCosmosDb.CosmosDbContext.GetDocumentsAsync``1(Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Get all items from a container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="container">The container object</param>
+            <returns>List of type T</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:EasyCosmosDb.CosmosDbContext.ReadItemAsync``1(System.String,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)" -->
+        <member name="M:EasyCosmosDb.CosmosDbContext.InsertAsync``1(``0,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Inserts object of type T into container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="item">Object to insert</param>
+            <param name="partitionKey">Partition Key to use</param>
+            <param name="container">Container object to insert into</param>
+            <returns>The inserted object</returns>
+        </member>
+        <member name="M:EasyCosmosDb.CosmosDbContext.UpsertAsync``1(``0,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Either inserts or updates an item in the container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="item">Object to insert</param>
+            <param name="partitionKey">Partition Key to use</param>
+            <param name="container">Container object to upsert into</param>
+            <returns>The upserted item</returns>
+        </member>
+        <member name="M:EasyCosmosDb.CosmosDbContext.DeleteItemAsync``1(System.String,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Deletes an item in the container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="id">Id of the item</param>
+            <param name="partitionKey">Partition Key of the item</param>
+            <param name="container">Container to delete item from</param>
+            <returns>Deleted item</returns>
+        </member>
+        <member name="T:EasyCosmosDb.ICosmosDbContext">
+            <summary>
+                Interface for CosmosDbContext
+                Represents CRUD operations for the database.
+            </summary>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.ItemFeedAsync``1(Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Get all items from a container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="container">The container object</param>
+            <returns>List of type T</returns>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.GetDocumentsAsync``1(Microsoft.Azure.Cosmos.Container,System.String)">
+            <summary>
+                Gets all items from a container with a query
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="container">The container object</param>
+            <param name="query">The query to perform</param>
+            <returns>List of type T</returns>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.GetDocumentsAsync``1(Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Get all items from a container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="container">The container object</param>
+            <returns>List of type T</returns>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.ReadItemAsync``1(System.String,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Get a specific item from a container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="id">Id of the item</param>
+            <param name="partitionKey">Partition Key of the item</param>
+            <param name="container">The container object</param>
+            <returns>Type T</returns>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.InsertAsync``1(``0,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Inserts object of type T into container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="item">Object to insert</param>
+            <param name="partitionKey">Partition Key to use</param>
+            <param name="container">Container object to insert into</param>
+            <returns>The inserted object</returns>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.UpsertAsync``1(``0,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Either inserts or updates an item in the container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="item">Object to insert</param>
+            <param name="partitionKey">Partition Key to use</param>
+            <param name="container">Container object to upsert into</param>
+            <returns>The upserted item</returns>
+        </member>
+        <member name="M:EasyCosmosDb.ICosmosDbContext.DeleteItemAsync``1(System.String,Microsoft.Azure.Cosmos.PartitionKey,Microsoft.Azure.Cosmos.Container)">
+            <summary>
+                Deletes an item in the container
+            </summary>
+            <typeparam name="T">Business model T</typeparam>
+            <param name="id">Id of the item</param>
+            <param name="partitionKey">Partition Key of the item</param>
+            <param name="container">Container to delete item from</param>
+            <returns>Deleted item</returns>
+        </member>
+        <member name="T:EasyCosmosDb.IKeyVaultContext">
+            <summary>
+                Interface for KeyVaultContext, used for dependency injections
+            </summary>
+        </member>
+        <member name="M:EasyCosmosDb.IKeyVaultContext.CosmosConnectionStringAsync">
+            <summary>
+                The Cosmos connection string
+            </summary>
+            <returns>Connection string</returns>
+        </member>
+        <member name="T:EasyCosmosDb.KeyVaultContext">
+            <summary>
+                Provides access to the Azure Key Vault
+            </summary>
+        </member>
+        <member name="M:EasyCosmosDb.KeyVaultContext.#ctor(System.String,Azure.Core.TokenCredential)">
+            <summary>
+                Constructor
+            </summary>
+            <param name="envvar">Environment variable for keyvault</param>
+            <param name="cred">Credentials</param>
+        </member>
+        <member name="M:EasyCosmosDb.KeyVaultContext.#ctor(System.String)">
+            <summary>
+                Constructor
+            </summary>
+            <param name="envvar">Environment variable for keyvault</param>
+        </member>
+        <member name="M:EasyCosmosDb.KeyVaultContext.#ctor">
+            <summary>
+                Constructor, get the evnironment variable 'RC_KEYVAULT_URL'
+            </summary>
+        </member>
+        <member name="M:EasyCosmosDb.KeyVaultContext.GetSecret(System.String)">
+            <summary>
+                Gets the secret from the vault
+            </summary>
+            <param name="name">Name of the secret string</param>
+            <returns>Secret string</returns>
+        </member>
+        <member name="M:EasyCosmosDb.KeyVaultContext.CosmosConnectionStringAsync">
+            <summary>
+                Gets the Cosmos Db account connection string
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyCosmosDb", "EasyCosmosD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyCosmosDb.Example", "EasyCosmosDb.Example\EasyCosmosDb.Example.csproj", "{2DEC349C-C88F-44D3-AEC1-7CC3A7FED0CE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{954FDDB4-AE54-4858-B03C-0E93CAA63035}"
+	ProjectSection(SolutionItems) = preProject
+		Licence.txt = Licence.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

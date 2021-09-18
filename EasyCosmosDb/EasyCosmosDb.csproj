@@ -5,6 +5,9 @@
     <Authors>jordansrowles</Authors>
     <Company>Rowles Cognition</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/jordansrowles/EasyCosmosDb</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageLicenseFile>Licence.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,6 +18,13 @@
     <PackageReference Include="Azure.Identity" Version="1.4.1" />
     <PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.2.0" />
     <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Licence.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
