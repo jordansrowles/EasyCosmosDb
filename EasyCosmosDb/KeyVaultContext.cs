@@ -10,8 +10,15 @@ using System.Threading.Tasks;
 
 namespace EasyCosmosDb
 {
+    /// <summary>
+    ///     Interface for KeyVaultContext, used for dependency injections
+    /// </summary>
     public interface IKeyVaultContext
     {
+        /// <summary>
+        ///     The Cosmos connection string
+        /// </summary>
+        /// <returns>Connection string</returns>
         Task<string> CosmosConnectionStringAsync();
     }
 
@@ -22,12 +29,21 @@ namespace EasyCosmosDb
     {
         SecretClient _client;
 
-
+        /// <summary>
+        ///     Constructor
+        /// </summary>
+        /// <param name="envvar">Environment variable for keyvault</param>
+        /// <param name="cred">Credentials</param>
         public KeyVaultContext(string envvar, TokenCredential cred)
         {
             string uri = Environment.GetEnvironmentVariable(envvar);
             _client = new SecretClient(new Uri(uri), cred);
         }
+
+        /// <summary>
+        ///     Constructor
+        /// </summary>
+        /// <param name="envvar">Environment variable for keyvault</param>
         public KeyVaultContext(string envvar)
         {
             string uri = Environment.GetEnvironmentVariable(envvar);

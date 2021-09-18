@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace EasyCosmosDb
 {
+    /// <summary>
+    ///     Interface for BaseCosmosModel
+    /// </summary>
     public interface IBaseCosmosModel
     {
+        /// <summary>
+        ///     Collects any data not binded to a property
+        /// </summary>
         IDictionary<string, JToken> CatchAll { get; set; }
     }
 
@@ -19,6 +25,9 @@ namespace EasyCosmosDb
     /// </summary>
     public partial class BaseCosmosModel : IBaseCosmosModel
     {
+        /// <summary>
+        ///     Collects any data not binded to a property
+        /// </summary>
         [JsonExtensionData]
         public IDictionary<string, JToken> CatchAll { get; set; }
     }
