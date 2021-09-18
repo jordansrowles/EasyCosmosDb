@@ -1,4 +1,6 @@
-﻿using Azure.Identity;
+﻿using Azure;
+using Azure.Core;
+using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,18 @@ namespace EasyCosmosDb
     public class KeyVaultContext : IKeyVaultContext
     {
         SecretClient _client;
+
+
+        public KeyVaultContext(string envvar, TokenCredential cred)
+        {
+            string uri = Environment.GetEnvironmentVariable(envvar);
+            _client = new SecretClient(new Uri(uri), cred);
+        }
+        public KeyVaultContext(string envvar)
+        {
+            string uri = Environment.GetEnvironmentVariable(envvar);
+            _client = new SecretClient(new Uri(uri), credential: new DefaultAzureCredential());
+        }
 
         /// <summary>
         ///     Constructor, get the evnironment variable 'RC_KEYVAULT_URL'

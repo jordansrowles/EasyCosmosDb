@@ -32,6 +32,7 @@ namespace EasyCosmosDb
                 options);
             _database = Client.GetDatabase(database);
         }
+
         public async Task<List<T>> ItemFeedAsync<T>(Container container)
         {
             List<T> values = new List<T>();
